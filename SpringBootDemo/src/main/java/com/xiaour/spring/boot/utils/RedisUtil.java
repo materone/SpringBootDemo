@@ -1,5 +1,7 @@
 package com.xiaour.spring.boot.utils;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -52,5 +54,10 @@ public class RedisUtil {
 		} finally {
 			jedis.close();
 		}
+	}
+	
+	public static void main(String [] args){
+		String uuid=UUID.randomUUID().toString().replaceAll("-","").toUpperCase();
+		System.out.println(uuid);
 	}
 }

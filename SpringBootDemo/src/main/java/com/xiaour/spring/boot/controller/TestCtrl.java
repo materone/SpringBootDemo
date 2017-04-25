@@ -65,7 +65,6 @@ public class TestCtrl {
     @RequestMapping("/getUser/{id}")  
     public String get(@PathVariable("id")int id){  
         try {
-        	System.err.println(id);
         	UserInfo user= userInfoMapper.selectByPrimaryKey(id);
 			return JsonUtil.getJsonString(user);
 		} catch (Exception e) {

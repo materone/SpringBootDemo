@@ -58,7 +58,7 @@ public class DataBaseConfiguration implements EnvironmentAware {
          dataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(propertyResolver.getProperty("maxOpenPreparedStatements")));
          try {
         	 //开启druid监控
-            dataSource.setFilters("stat");
+            dataSource.setFilters("stat,wall");
 			dataSource.init();
 		} catch (SQLException e) {
 			
