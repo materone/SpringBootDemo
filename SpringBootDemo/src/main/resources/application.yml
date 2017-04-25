@@ -34,8 +34,8 @@ jdbc:
         maxOpenPreparedStatements: 20
 # MyBatis
 mybatis:
-    typeAliasesPackage: com.tony.spring.boot.entity
-    mapperLocations: classpath*:/com/tony/spring/boot/mapper/*.xml
+    typeAliasesPackage: com.xiaour.spring.boot.entity
+    mapperLocations: classpath*:/com/xiaour/spring/boot/mapper/*.xml
     configLocation: classpath:mybatis-config.xml
     
 # LOGGING
