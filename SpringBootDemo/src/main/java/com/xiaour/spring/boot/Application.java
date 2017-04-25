@@ -1,4 +1,4 @@
-package com.tony.spring.boot;
+package com.xiaour.spring.boot;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
@@ -17,7 +17,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @SpringBootApplication(exclude = MybatisAutoConfiguration.class)
 @ServletComponentScan
 @EnableAutoConfiguration
-@MapperScan("com.tony.spring.boot.mapper")
+@MapperScan("com.xiaour.spring.boot.mapper")
 public class Application  extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
 
 	@Value("${server.port}")

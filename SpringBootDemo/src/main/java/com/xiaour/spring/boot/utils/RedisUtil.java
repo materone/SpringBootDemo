@@ -1,4 +1,4 @@
-package com.tony.spring.boot.utils;
+package com.xiaour.spring.boot.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

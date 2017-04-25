@@ -1,17 +1,17 @@
-package com.tony.spring.boot.controller;
+package com.xiaour.spring.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tony.spring.boot.entity.UserInfo;
-import com.tony.spring.boot.mapper.UserInfoMapper;
-import com.tony.spring.boot.utils.JsonUtil;
-import com.tony.spring.boot.utils.RedisUtil;
+import com.xiaour.spring.boot.entity.UserInfo;
+import com.xiaour.spring.boot.mapper.UserInfoMapper;
+import com.xiaour.spring.boot.utils.JsonUtil;
+import com.xiaour.spring.boot.utils.RedisUtil;
 
 /**
- * Created by Administrator on 2017/4/19.
+ * Created by xiaour on 2017/4/19.
  */
 @RestController
 @RequestMapping(value="/test")

@@ -1,4 +1,4 @@
-package com.tony.spring.boot.config;
+package com.xiaour.spring.boot.config;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -23,9 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 初始化SqlSessionFactory
- * Java Lib For OIS, Powered By BeiJing FanTongTianXia.
- * Copyright (c) 2014-2017 FanTongTianXia Co.,Ltd
- * http://www.chifaner.com/
+ * Java Lib For OIS, Powered By xiaour.
  *
  * @ClassName MybatisConfiguration
  * @author Zhang.Tao
@@ -51,7 +49,6 @@ public class MybatisConfiguration implements EnvironmentAware {
 
 	/**
 	 * 初始化SessionFactory
-	 * @Description TODO
 	 * @return
 	 */
 	@Bean

@@ -1,4 +1,4 @@
-package com.tony.spring.boot.entity;
+package com.xiaour.spring.boot.entity;
 
 import java.util.Date;
 

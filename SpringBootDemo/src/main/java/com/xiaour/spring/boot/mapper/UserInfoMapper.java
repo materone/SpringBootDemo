@@ -1,6 +1,6 @@
-package com.tony.spring.boot.mapper;
+package com.xiaour.spring.boot.mapper;
 
-import com.tony.spring.boot.entity.UserInfo;
+import com.xiaour.spring.boot.entity.UserInfo;
 
 public interface UserInfoMapper {
     int deleteByPrimaryKey(Integer oid);

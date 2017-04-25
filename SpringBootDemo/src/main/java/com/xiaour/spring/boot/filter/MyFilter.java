@@ -1,4 +1,4 @@
-package com.tony.spring.boot.filter;
+package com.xiaour.spring.boot.filter;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Created by Administrator on 2017/4/19.
+ * Created by xiaour on 2017/4/19.
  */
 
 @ConfigurationProperties("cacheServer")

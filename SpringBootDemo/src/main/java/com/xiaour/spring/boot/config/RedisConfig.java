@@ -1,4 +1,4 @@
-package com.tony.spring.boot.config;
+package com.xiaour.spring.boot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,10 +11,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * 配置redis数据源
- * Java Lib For OIS, Powered By BeiJing FanTongTianXia.
- * Copyright (c) 2014-2017 FanTongTianXia Co.,Ltd
- * http://www.chifaner.com/
- *
+ * Java Lib For OIS, Powered By xiaour.
  * @ClassName RedisConfig
  * @author Zhang.Tao
  * @Date 2017年4月24日 下午5:25:30

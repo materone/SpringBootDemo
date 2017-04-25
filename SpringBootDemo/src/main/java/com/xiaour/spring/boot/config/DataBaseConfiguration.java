@@ -1,4 +1,4 @@
-package com.tony.spring.boot.config;
+package com.xiaour.spring.boot.config;
 
 import java.sql.SQLException;
 
@@ -33,7 +33,6 @@ public class DataBaseConfiguration implements EnvironmentAware {
 
 	/**
 	 * 配置数据源
-	 * @Description TODO
 	 * @return
 	 */
 	@Bean(name = "dataSource",destroyMethod = "close")
