@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tony.spring.boot.mapper.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.tony.spring.boot.entity.UserInfo" >
+<mapper namespace="com.xiaour.spring.boot.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xiaour.spring.boot.entity.UserInfo" >
     <id column="OID" property="oid" jdbcType="INTEGER" />
     <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
     <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
     <result column="GROUP_ID" property="groupId" jdbcType="VARCHAR" />
   </resultMap>
   
-  <resultMap id="ResultMapWithBLOBs" type="com.tony.spring.boot.entity.UserInfo" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.xiaour.spring.boot.entity.UserInfo" extends="BaseResultMap" >
     <result column="DESCRIPTION" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
   
@@ -42,7 +42,7 @@
     where OID = #{oid,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insertSelective" parameterType="com.tony.spring.boot.entity.UserInfo" >
+  <insert id="insertSelective" parameterType="com.xiaour.spring.boot.entity.UserInfo" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="oid != null" >
@@ -122,7 +122,7 @@
     </trim>
   </insert>
   
-  <update id="updateByPrimaryKeySelective" parameterType="com.tony.spring.boot.entity.UserInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaour.spring.boot.entity.UserInfo" >
     update user
     <set >
       <if test="userId != null" >
