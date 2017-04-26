@@ -56,19 +56,11 @@ public class MybatisConfiguration implements EnvironmentAware {
 	public SqlSessionFactory sqlSessionFactory() {
 		try {
 			
-			System.err.println(propertyResolver.getProperty("mapperLocations"));
 			SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 			sessionFactory.setDataSource(dataSource);
-			sessionFactory.setTypeAliasesPackage(propertyResolver
-					.getProperty("typeAliasesPackage"));
-			sessionFactory
-					.setMapperLocations(new PathMatchingResourcePatternResolver()
-							.getResources(propertyResolver
-									.getProperty("mapperLocations")));
-			sessionFactory
-					.setConfigLocation(new DefaultResourceLoader()
-							.getResource(propertyResolver
-									.getProperty("configLocation")));
+			sessionFactory.setTypeAliasesPackage(propertyResolver.getProperty("typeAliasesPackage"));
+			sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(propertyResolver.getProperty("mapperLocations")));
+			sessionFactory.setConfigLocation(new DefaultResourceLoader().getResource(propertyResolver.getProperty("configLocation")));
 
 			return sessionFactory.getObject();
 		} catch (Exception e) {
