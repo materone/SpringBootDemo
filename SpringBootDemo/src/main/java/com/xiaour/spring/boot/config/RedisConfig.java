@@ -1,5 +1,7 @@
 package com.xiaour.spring.boot.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +21,8 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 @Configuration
 public class RedisConfig {
-     
+	private static Logger log = LoggerFactory.getLogger(RedisConfig.class);
+
     
   @Bean(name= "jedis.pool")  
   @Autowired  
@@ -33,11 +36,16 @@ public class RedisConfig {
   public JedisPoolConfig jedisPoolConfig (@Value("${jedis.pool.config.maxTotal}")int maxTotal,  
                               @Value("${jedis.pool.config.maxIdle}")int maxIdle,  
                               @Value("${jedis.pool.config.maxWaitMillis}")int maxWaitMillis) {  
-      JedisPoolConfig config = new JedisPoolConfig();  
-      config.setMaxTotal(maxTotal);  
-      config.setMaxIdle(maxIdle);  
-      config.setMaxWaitMillis(maxWaitMillis);  
-      return config;  
+      try {
+		JedisPoolConfig config = new JedisPoolConfig();  
+		  config.setMaxTotal(maxTotal);  
+		  config.setMaxIdle(maxIdle);  
+		  config.setMaxWaitMillis(maxWaitMillis);  
+		  return config;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+	return null;  
   } 
 
 }

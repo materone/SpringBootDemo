@@ -64,7 +64,6 @@ public class MybatisConfiguration implements EnvironmentAware {
 
 			return sessionFactory.getObject();
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.warn("Could not confiure mybatis session factory");
 			return null;
 		}

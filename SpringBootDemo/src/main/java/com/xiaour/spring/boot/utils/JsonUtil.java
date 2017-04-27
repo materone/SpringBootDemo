@@ -10,48 +10,36 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonUtil {
+	
+	
 
-    public static String getJsonString(Object javaObj) {
+    public static String getJsonString(Object javaObj) throws JsonProcessingException {
         String ret = "{}";
+        
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            ret = mapper.writeValueAsString(javaObj);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+
+        ret = mapper.writeValueAsString(javaObj);
 
 		return ret.replaceAll(":null",":\"\"");
 
     }
 
-    public static <T> T readJson2Obj(String json, Class<T> classObj) {
+    public static <T> T readJson2Obj(String json, Class<T> classObj) throws JsonParseException,JsonMappingException,IOException  {
         T ret = null;
+        
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            ret = mapper.readValue(json, classObj);
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        
+        ret = mapper.readValue(json, classObj);
+        
         return ret;
     }
 
-    public static <T> T[] readJson2Array(String json, Class<T[]> classObj) {
+    public static <T> T[] readJson2Array(String json, Class<T[]> classObj) throws JsonParseException,JsonMappingException,IOException   {
         T[] ret = null;
+        
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            ret = mapper.readValue(json, classObj);
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        ret = mapper.readValue(json, classObj);
 
         return ret;
     }
@@ -60,7 +48,11 @@ public class JsonUtil {
     	Map<String,Object> map= new HashMap<>();
     	map.put("name","xiaochouyu");
     	map.put("stak","小丑鱼");
-    	System.out.println(getJsonString(map));
+    	try {
+			System.out.println(getJsonString(map));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
     }
 
 }

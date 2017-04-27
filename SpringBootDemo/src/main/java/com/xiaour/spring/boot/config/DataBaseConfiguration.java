@@ -40,7 +40,6 @@ public class DataBaseConfiguration implements EnvironmentAware {
 	 */
 	@Bean(name = "dataSource",destroyMethod = "close")
 	public DataSource dataSource() {
-		log.debug(env.getActiveProfiles().toString());  
          
          DruidDataSource dataSource = new DruidDataSource();  
          dataSource.setUrl(propertyResolver.getProperty("url"));  
@@ -64,7 +63,7 @@ public class DataBaseConfiguration implements EnvironmentAware {
             dataSource.setFilters("stat,wall");
 			dataSource.init();
 		} catch (SQLException e) {
-			
+			log.error(e.getMessage());
 		}
          return dataSource; 
 	}
