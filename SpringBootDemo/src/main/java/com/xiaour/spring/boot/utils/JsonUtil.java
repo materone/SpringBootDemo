@@ -11,8 +11,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonUtil {
 	
-	
-
     public static String getJsonString(Object javaObj) throws JsonProcessingException {
         String ret = "{}";
         
