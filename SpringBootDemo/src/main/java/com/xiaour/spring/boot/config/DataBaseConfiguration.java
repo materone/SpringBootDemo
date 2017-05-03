@@ -23,14 +23,12 @@ public class DataBaseConfiguration implements EnvironmentAware {
 
 	private static Logger log = LoggerFactory.getLogger(DataBaseConfiguration.class);
 
-	private Environment env;
 
 	/**
 	 * 初始化yml配置
 	 */
 	@Override
 	public void setEnvironment(Environment env) {
-		this.env = env;
 		this.propertyResolver = new RelaxedPropertyResolver(env, "jdbc.datasource.");
 	}
 
