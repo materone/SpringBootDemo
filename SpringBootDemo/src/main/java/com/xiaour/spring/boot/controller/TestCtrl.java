@@ -1,5 +1,8 @@
 package com.xiaour.spring.boot.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +12,7 @@ import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.mapper.UserInfoMapper;
 import com.xiaour.spring.boot.utils.JsonUtil;
 import com.xiaour.spring.boot.utils.RedisUtil;
+import com.xiaour.spring.boot.utils.aes.AuthHelper;
 
 /**
  * Created by xiaour on 2017/4/19.
@@ -71,4 +75,21 @@ public class TestCtrl {
 		}
 		return "";  
     }  
+    
+    /**
+     * 获取数据库中的用户
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getAccessToken")  
+    public String getAccessToken(){  
+        try {
+        	Map<String,Object> data= new HashMap<>();
+        	data.put("access_token", AuthHelper.getAccessToken());
+			return JsonUtil.getJsonString(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";  
+    } 
 }
