@@ -233,6 +233,57 @@ public class AuthHelper {
 
 	}
 	
+	
+	public static String snsTokenUser(String userCode) throws OApiException {
+		String accessToken;
+		String url = "https://oapi.dingtalk.com/sns/gettoken?appid="+Env.SNS_APP_ID+"&appsecret="+Env.SNS_APP_SECRET;
+		JSONObject response = HttpHelper.httpGet(url);
+		
+		if (response.containsKey("access_token")) {
+			accessToken = response.getString("access_token");
+			JSONObject json1=getPersistentCode(accessToken,userCode);
+			
+			JSONObject json2=getSnsToken(accessToken,json1.getString("openid"),json1.getString("persistent_code"));
+			
+			String userInfo=getSnsUserinfo(json2.getString("sns_token"));
+			return userInfo;
+		} else {
+			throw new OApiResultException("Sso_token");
+		}
+	
+	}
+	
+	
+	private static JSONObject getPersistentCode(String accessToken,String userCode) throws OApiException{
+		String snsUrl = "https://oapi.dingtalk.com/sns/get_persistent_code?access_token="+accessToken;
+		
+		JSONObject data=new JSONObject();
+		data.put("tmp_auth_code", userCode);
+		//String jsonStr="{\"tmp_auth_code\": \""+userCode+"\"}";
+		JSONObject snsResult = HttpHelper.httpPost(snsUrl, data);
+		return snsResult;
+	}
+	
+	private static JSONObject getSnsToken(String accessToken,String openid,String persistentCode) throws OApiException{
+		String snsUrl = "https://oapi.dingtalk.com/sns/get_sns_token?access_token="+accessToken;
+		JSONObject data=new JSONObject();
+			data.put("openid", openid);
+			data.put("persistent_code", persistentCode);
+			
+		//String jsonStr="{\"openid\": \""+openid+"\",\"persistent_code\": \""+persistentCode+"\"}";
+		JSONObject snsResult = HttpHelper.httpPost(snsUrl, data);
+		return snsResult;
+	}
+	
+	private static String getSnsUserinfo(String snsToken) throws OApiException{
+		String snsUrl = "https://oapi.dingtalk.com/sns/getuserinfo?sns_token="+snsToken;
+		JSONObject snsResult = HttpHelper.httpGet(snsUrl);
+		return snsResult.toJSONString();
+	}
+	
+	
+	
+	
 	public static String getUserinfo(String code) throws OApiException {
 		String url = "https://oapi.dingtalk.com/user/getuserinfo?access_token="+getAccessToken()+"&code="+code;
 		JSONObject response = HttpHelper.httpGet(url);

@@ -121,4 +121,16 @@ public class TestCtrl {
 		}
 		return "";  
     } 
+    
+    @RequestMapping("/snsUser")  
+    public String snsUser(String code){  
+        try {
+        	String jsonStr=AuthHelper.snsTokenUser(code);
+        	System.err.println(jsonStr);
+			return jsonStr;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";  
+    } 
 }

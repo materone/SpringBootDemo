@@ -86,7 +86,6 @@ public class HttpHelper {
         		setSocketTimeout(2000).setConnectTimeout(2000).build();
         httpPost.setConfig(requestConfig);
         httpPost.addHeader("Content-Type", "application/json");
-
         try {
         	StringEntity requestEntity = new StringEntity(JSON.toJSONString(data), "utf-8");
             httpPost.setEntity(requestEntity);

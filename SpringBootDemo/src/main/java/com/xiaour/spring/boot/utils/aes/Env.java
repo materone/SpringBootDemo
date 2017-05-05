@@ -22,4 +22,10 @@ public class Env {
 	public static final String TOKEN = "";
 	public static final String ENCODING_AES_KEY = "";
 	
+	
+	
+	public static final String SNS_APP_ID = "dingoates0filrnnxqbetd";
+	public static final String SNS_APP_SECRET = "KQgORLyXYMcnfE1C6iXVSv1epdfiH_xiWARV6lApPgcAFOTr1SLzAFpr3ErBkpBQ";
+
+	
 }
