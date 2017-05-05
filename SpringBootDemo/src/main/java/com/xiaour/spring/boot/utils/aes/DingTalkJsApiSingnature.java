@@ -1,11 +1,7 @@
 package com.xiaour.spring.boot.utils.aes;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.xiaour.spring.boot.exception.DingTalkEncryptException;
 

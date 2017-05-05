@@ -46,8 +46,8 @@ public class MyFilter extends StatViewServlet implements Filter{
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        System.out.println(request.getRequestURI());
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        System.err.println(request.getParameter("code"));
         filterChain.doFilter(request, response);
     }
 

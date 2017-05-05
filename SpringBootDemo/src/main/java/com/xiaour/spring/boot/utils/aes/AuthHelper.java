@@ -6,6 +6,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +20,12 @@ import com.dingtalk.open.client.api.service.corp.JsapiService;
 import com.dingtalk.open.client.common.SdkInitException;
 import com.dingtalk.open.client.common.ServiceException;
 import com.dingtalk.open.client.common.ServiceNotExistException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.xiaour.spring.boot.exception.OApiException;
 import com.xiaour.spring.boot.exception.OApiResultException;
 import com.xiaour.spring.boot.utils.FileUtils;
 import com.xiaour.spring.boot.utils.HttpHelper;
+import com.xiaour.spring.boot.utils.JsonUtil;
 
 public class AuthHelper {
 
@@ -162,10 +166,11 @@ public class AuthHelper {
 	public static String getConfig(HttpServletRequest request) {
 		String urlString = request.getRequestURL().toString();
 		String queryString = request.getQueryString();
+		String agentId=request.getParameter("agentId");
 
 		String queryStringEncode = null;
 		String url;
-		if (queryString != null) {
+/*		if (queryString != null) {
 			try {
 				queryStringEncode = URLDecoder.decode(queryString,"UTF-8");
 			} catch (UnsupportedEncodingException e) {
@@ -174,30 +179,43 @@ public class AuthHelper {
 			url = urlString + "?" + queryStringEncode;
 		} else {
 			url = urlString;
-		}
+		}*/
 		
 		String nonceStr = "abcdefg";
 		long timeStamp = System.currentTimeMillis() / 1000;
-		String signedUrl = url;
+		String signedUrl = urlString;
 		String accessToken = null;
 		String ticket = null;
 		String signature = null;
-		String agentid = null;
 
 		try {
 			accessToken = AuthHelper.getAccessToken();
 	       
 			ticket = AuthHelper.getJsapiTicket(accessToken);
 			signature = AuthHelper.sign(ticket, nonceStr, timeStamp, signedUrl);
-			agentid = "";
 			
 		} catch (OApiException  e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Map<String,Object> data= new HashMap<>();
+		
+		data.put("jsticket", ticket);
+		data.put("signature", signature);
+		data.put("nonceStr", nonceStr);
+		data.put("timeStamp", timeStamp);
+		data.put("corpId", Env.CORP_ID);
+		data.put("agentid",agentId);
+		
 		String configValue = "{jsticket:'" + ticket + "',signature:'" + signature + "',nonceStr:'" + nonceStr + "',timeStamp:'"
-		+ timeStamp + "',corpId:'" + Env.CORP_ID + "',agentid:'" + agentid+  "'}";
+		+ timeStamp + "',corpId:'" + Env.CORP_ID + "',agentid:'" + agentId+  "'}";
+		
 		System.out.println(configValue);
+		try {
+			return JsonUtil.getJsonString(data);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
 		return configValue;
 	}
 
@@ -214,5 +232,15 @@ public class AuthHelper {
 		return ssoToken;
 
 	}
+	
+	public static String getUserinfo(String code) throws OApiException {
+		String url = "https://oapi.dingtalk.com/user/getuserinfo?access_token="+getAccessToken()+"&code="+code;
+		JSONObject response = HttpHelper.httpGet(url);
+		String json= response.toJSONString();
+		return json;
+
+	}
+	
+	
 
 }

@@ -3,6 +3,8 @@ package com.xiaour.spring.boot.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,6 +89,33 @@ public class TestCtrl {
         	Map<String,Object> data= new HashMap<>();
         	data.put("access_token", AuthHelper.getAccessToken());
 			return JsonUtil.getJsonString(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";  
+    } 
+    
+    /**
+     * 获取数据库中的用户
+     * @param id
+     * @return
+     */
+    @RequestMapping("/ding")  
+    public String ding(HttpServletRequest request){  
+        try {
+			return AuthHelper.getConfig(request);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";  
+    } 
+    
+    @RequestMapping("/userinfo")  
+    public String userinfo(String code){  
+        try {
+        	String jsonStr=AuthHelper.getUserinfo(code);
+        	System.err.println(jsonStr);
+			return jsonStr;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
