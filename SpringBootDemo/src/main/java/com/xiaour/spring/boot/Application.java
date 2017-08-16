@@ -13,10 +13,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
  * 
- * Java Lib For OIS, Powered By BeiJing FanTongTianXia.
- * Copyright (c) 2014-2017 FanTongTianXia Co.,Ltd
- * http://www.chifaner.com/
- *
  * @ClassName Application
  * @author Zhang.Tao
  * @Date 2017年4月27日 下午5:30:34
