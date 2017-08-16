@@ -23,8 +23,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 初始化SqlSessionFactory
- * Java Lib For OIS, Powered By xiaour.
- *
  * @ClassName MybatisConfiguration
  * @author Zhang.Tao
  * @Date 2017年4月24日 下午5:24:56
