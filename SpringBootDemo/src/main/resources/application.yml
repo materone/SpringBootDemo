@@ -16,7 +16,7 @@ server :
 jdbc:
     datasource:
         name: test
-        url: jdbc:mysql://192.168.2.5:3335/fantong_tm
+        url: jdbc:mysql://192.168.2.5:3335/springboot
         username: root
         password: chifaner159
         # 使用druid数据源
