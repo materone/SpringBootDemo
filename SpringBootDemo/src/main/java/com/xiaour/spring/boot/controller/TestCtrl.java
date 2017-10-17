@@ -1,9 +1,5 @@
 package com.xiaour.spring.boot.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +10,7 @@ import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.mapper.UserInfoMapper;
 import com.xiaour.spring.boot.utils.JsonUtil;
 import com.xiaour.spring.boot.utils.RedisUtil;
-import com.xiaour.spring.boot.utils.aes.AuthHelper;
+
 
 /**
  * Created by xiaour on 2017/4/19.
@@ -78,59 +74,5 @@ public class TestCtrl {
 		return "";  
     }  
     
-    /**
-     * 获取数据库中的用户
-     * @param id
-     * @return
-     */
-    @RequestMapping("/getAccessToken")  
-    public String getAccessToken(){  
-        try {
-        	Map<String,Object> data= new HashMap<>();
-        	data.put("access_token", AuthHelper.getAccessToken());
-			return JsonUtil.getJsonString(data);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";  
-    } 
-    
-    /**
-     * 获取数据库中的用户
-     * @param id
-     * @return
-     */
-    @RequestMapping("/ding")  
-    public String ding(HttpServletRequest request){  
-        try {
-			return AuthHelper.getConfig(request);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";  
-    } 
-    
-    @RequestMapping("/userinfo")  
-    public String userinfo(String code){  
-        try {
-        	String jsonStr=AuthHelper.getUserinfo(code);
-        	System.err.println(jsonStr);
-			return jsonStr;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";  
-    } 
-    
-    @RequestMapping("/snsUser")  
-    public String snsUser(String code){  
-        try {
-        	String jsonStr=AuthHelper.snsTokenUser(code);
-        	System.err.println(jsonStr);
-			return jsonStr;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";  
-    } 
+
 }
