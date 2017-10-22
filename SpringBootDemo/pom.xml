@@ -115,6 +115,14 @@
     </properties>
 
     <build>
+        <resources>
+          <resource>
+            <directory>${project.build.sourceDirectory}</directory>
+            <includes>
+              <include>**/*.xml</include>
+            </includes>
+          </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
