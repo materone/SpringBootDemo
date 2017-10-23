@@ -1,5 +1,7 @@
 package com.xiaour.spring.boot.task;
 
+import java.util.Date;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,6 +12,6 @@ public class Task {
 	
     @Scheduled(cron="0 0/1 * * * ?")
 	public void run(){
-		System.out.println("定时任务执行");
+		System.out.println("定时任务执行:" + new Date());
 	}
 }

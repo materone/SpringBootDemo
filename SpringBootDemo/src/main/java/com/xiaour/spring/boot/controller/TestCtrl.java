@@ -74,5 +74,22 @@ public class TestCtrl {
 		return "";  
     }  
     
+    /**
+     * 获取数据库中的用户
+     * @param id
+     * @param name
+     * @return
+     */
+    @RequestMapping("/getUser/{id}/{name}")  
+    public String get(@PathVariable("id")int id,@PathVariable("name")String name){  
+        try {
+        	UserInfo user= userInfoMapper.selectByIdNameKey(id, name);
+			return JsonUtil.getJsonString(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";  
+    }  
+    
 
 }
