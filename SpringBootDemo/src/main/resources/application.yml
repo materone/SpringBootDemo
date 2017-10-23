@@ -35,7 +35,7 @@ jdbc:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-
+# MyBatis
 mybatis:
     typeAliasesPackage: com.xiaour.spring.boot.entity
     mapperLocations: classpath*:/com/xiaour/spring/boot/mapper/*.xml

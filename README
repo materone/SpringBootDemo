@@ -18,3 +18,7 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('1', 'xiaour', '1231');
 
+#run in maven
+mvn spring-boot:run
+# or package for java run
+mvn package

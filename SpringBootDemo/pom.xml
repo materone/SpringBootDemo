@@ -115,6 +115,23 @@
     </properties>
 
     <build>
+        <resources>
+          <resource>
+            <directory>${project.build.sourceDirectory}</directory>
+            <includes>
+              <include>**/*.xml</include>
+            </includes>
+          </resource>
+          <resource>
+            <directory>${basedir}/src/main/resources</directory>
+            <includes>
+                <include>**/application*.yml</include>
+                <include>**/application*.yaml</include>
+                <include>**/application*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+        </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
